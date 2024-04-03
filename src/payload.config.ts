@@ -16,15 +16,16 @@ import Categories from './collections/Categories';
 
 import Users from './collections/Users'
 
-
+const mockModulePath = path.resolve(__dirname, 'mocks', 'emptyFuntion.tsx')
 
 export default buildConfig({
-
+  serverURL: process.env.PAYLOAD_PUBLIC_EXTERNAL_SERVER_URL,
   admin: {
     user: Users.slug,
-    bundler: webpackBundler(),
+    bundler: webpackBundler()
   },
-  cors: '*',
+  cors: process.env.WHITELIST_ORIGINS ? process.env.WHITELIST_ORIGINS.split(',') : [],
+  csrf: process.env.WHITELIST_ORIGINS ? process.env.WHITELIST_ORIGINS.split(',') : [],
 
   editor: slateEditor({}),
   collections: [
