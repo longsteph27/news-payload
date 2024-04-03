@@ -19,10 +19,14 @@ import Users from './collections/Users'
 
 
 export default buildConfig({
+
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
   },
+  cors: process.env.WHITELIST_ORIGINS ? process.env.WHITELIST_ORIGINS.split(',') : [],
+  csrf: process.env.WHITELIST_ORIGINS ? process.env.WHITELIST_ORIGINS.split(',') : [],
+
   editor: slateEditor({}),
   collections: [
     Media,
