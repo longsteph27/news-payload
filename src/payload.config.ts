@@ -33,8 +33,8 @@ export default buildConfig({
       },
     }),
   },
-  cors: process.env.WHITELIST_ORIGINS ? process.env.WHITELIST_ORIGINS.split(',') : [],
-  csrf: process.env.WHITELIST_ORIGINS ? process.env.WHITELIST_ORIGINS.split(',') : [],
+  cors: '*',
+  csrf: ['https://news-web-kappa-three.vercel.app/'],
 
   editor: slateEditor({}),
   collections: [
